@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const tabs = [
@@ -92,11 +92,23 @@ const tabs = [
   },
 ];
 
-const WhySection = () => {
+const WhySection = ({ activeTab }) => {
   const [active, setActive] = useState(0);
   const [visible, setVisible] = useState(true);
   const chatRef = useRef(null);
   const sectionRef = useScrollReveal({ threshold: 0.06 });
+
+  // Quando activeTab vier de fora (teclado do player), sincroniza
+  useEffect(() => {
+    if (activeTab === undefined) return;
+    const clamped = Math.max(0, Math.min(activeTab, tabs.length - 1));
+    if (clamped === active) return;
+    setVisible(false);
+    setTimeout(() => {
+      setActive(clamped);
+      setVisible(true);
+    }, 180);
+  }, [activeTab]);
 
   const switchTab = (i) => {
     if (i === active) return;
