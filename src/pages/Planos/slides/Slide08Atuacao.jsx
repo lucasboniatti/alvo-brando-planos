@@ -31,16 +31,20 @@ const Slide08Atuacao = ({ step = 0 }) => {
   const [visible40, setVisible40] = useState(false);
 
   useEffect(() => {
-    if (show60 && !rendered60) {
+    if (show60) {
       setRendered60(true);
       requestAnimationFrame(() => requestAnimationFrame(() => setVisible60(true)));
+    } else {
+      setVisible60(false);
     }
   }, [show60]);
 
   useEffect(() => {
-    if (show40 && !rendered40) {
+    if (show40) {
       setRendered40(true);
       requestAnimationFrame(() => requestAnimationFrame(() => setVisible40(true)));
+    } else {
+      setVisible40(false);
     }
   }, [show40]);
 
