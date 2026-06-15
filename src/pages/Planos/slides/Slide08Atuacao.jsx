@@ -8,7 +8,7 @@
 
 const W = 440;
 const H = 420;
-const SPLIT = H * 0.62; // linha divisória — 60% ocupa mais espaço visual
+const SPLIT = H * 0.55; // linha divisória
 
 // Largura do triângulo na altura SPLIT
 const wAtSplit = W * (1 - SPLIT / H);
