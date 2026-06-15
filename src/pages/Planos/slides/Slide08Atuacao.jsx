@@ -8,7 +8,7 @@
 
 const W = 440;
 const H = 420;
-const SPLIT = H * 0.55; // linha divisória
+const SPLIT = H * 0.52; // linha divisória
 
 // Largura do triângulo na altura SPLIT
 const wAtSplit = W * (1 - SPLIT / H);
@@ -23,14 +23,23 @@ const xRAtText = (W + wAtText) / 2;
 import { useEffect, useRef, useState } from 'react';
 
 const Slide08Atuacao = ({ step = 0 }) => {
-  const show40 = step >= 1;
+  const show60 = step >= 1;
+  const show40 = step >= 2;
+  const [rendered60, setRendered60] = useState(false);
+  const [visible60, setVisible60] = useState(false);
   const [rendered40, setRendered40] = useState(false);
   const [visible40, setVisible40] = useState(false);
 
   useEffect(() => {
+    if (show60 && !rendered60) {
+      setRendered60(true);
+      requestAnimationFrame(() => requestAnimationFrame(() => setVisible60(true)));
+    }
+  }, [show60]);
+
+  useEffect(() => {
     if (show40 && !rendered40) {
       setRendered40(true);
-      // Pequeno delay para o DOM montar com opacity:0 antes de animar
       requestAnimationFrame(() => requestAnimationFrame(() => setVisible40(true)));
     }
   }, [show40]);
@@ -59,27 +68,28 @@ const Slide08Atuacao = ({ step = 0 }) => {
               </linearGradient>
             </defs>
 
-            {/* Triângulo completo — contorno */}
-            <polygon
+            {/* Triângulo completo — contorno (sempre visível) */}
+            {rendered60 && <polygon
               points={`0,0 ${W},0 ${W/2},${H}`}
               fill="none"
               stroke="rgba(255,255,255,0.12)"
               strokeWidth="1"
-            />
+              style={{ opacity: visible60 ? 1 : 0, transition: 'opacity 0.45s cubic-bezier(0.16,1,0.3,1)' }}
+            />}
 
             {/* Parte superior — 60% */}
-            <polygon
-              points={`0,0 ${W},0 ${xR},${SPLIT} ${xL},${SPLIT}`}
-              fill="url(#grad-top)"
-            />
-
-            {/* Texto 60% — centralizado no meio vertical da área roxa */}
-            <text x={W/2} y={SPLIT / 2 - 10} textAnchor="middle"
-              fontFamily="var(--font-display)" fontSize="38" fontWeight="800"
-              fill="#fff" letterSpacing="-1">60%</text>
-            <text x={W/2} y={SPLIT / 2 + 18} textAnchor="middle"
-              fontFamily="var(--font-display)" fontSize="14" fontWeight="600"
-              fill="rgba(255,255,255,0.9)">Estratégico</text>
+            {rendered60 && <g style={{ opacity: visible60 ? 1 : 0, transition: 'opacity 0.45s cubic-bezier(0.16,1,0.3,1)' }}>
+              <polygon
+                points={`0,0 ${W},0 ${xR},${SPLIT} ${xL},${SPLIT}`}
+                fill="url(#grad-top)"
+              />
+              <text x={W/2} y={SPLIT / 2 - 14} textAnchor="middle"
+                fontFamily="var(--font-display)" fontSize="38" fontWeight="800"
+                fill="#fff" letterSpacing="-1">60%</text>
+              <text x={W/2} y={SPLIT / 2 + 14} textAnchor="middle"
+                fontFamily="var(--font-display)" fontSize="14" fontWeight="600"
+                fill="rgba(255,255,255,0.9)">Estratégico</text>
+            </g>}
 
             {/* Parte inferior — 40% (animada) */}
             {rendered40 && <g style={{ opacity: visible40 ? 1 : 0, transition: 'opacity 0.45s cubic-bezier(0.16,1,0.3,1)' }}>
@@ -95,22 +105,22 @@ const Slide08Atuacao = ({ step = 0 }) => {
                 strokeWidth="1"
                 strokeDasharray="4 3"
               />
-              <text x={W/2} y={SPLIT + (H - SPLIT) * 0.38} textAnchor="middle"
+              <text x={W/2} y={SPLIT + (H - SPLIT) * 0.33} textAnchor="middle"
                 fontFamily="var(--font-display)" fontSize="26" fontWeight="800"
                 fill="rgba(255,255,255,0.9)" letterSpacing="-0.5">40%</text>
-              <text x={W/2} y={SPLIT + (H - SPLIT) * 0.38 + 20} textAnchor="middle"
+              <text x={W/2} y={SPLIT + (H - SPLIT) * 0.33 + 20} textAnchor="middle"
                 fontFamily="var(--font-display)" fontSize="12" fontWeight="600"
                 fill="rgba(255,255,255,0.6)">Operacional</text>
             </g>}
           </svg>
 
           {/* Label lateral 60% */}
-          <div style={{ position: 'absolute', left: -148, top: SPLIT / 2 - 20, textAlign: 'right', width: 128 }}>
+          {rendered60 && <div style={{ opacity: visible60 ? 1 : 0, transition: 'opacity 0.45s cubic-bezier(0.16,1,0.3,1)', position: 'absolute', left: -116, top: SPLIT / 2 - 20, textAlign: 'right', width: 108 }}>
             <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', lineHeight: 1.5 }}>
               Plano que gera<br/>
               <span style={{ color: 'var(--brand-400)', fontWeight: 600 }}>Previsibilidade</span>
             </div>
-          </div>
+          </div>}
 
           {/* Label lateral 40% (animado) */}
           {rendered40 && <div style={{ opacity: visible40 ? 1 : 0, transition: 'opacity 0.45s cubic-bezier(0.16,1,0.3,1)', position: 'absolute', left: xRAtText + 40, top: textY, textAlign: 'left', width: 120 }}>
@@ -124,6 +134,6 @@ const Slide08Atuacao = ({ step = 0 }) => {
   );
 };
 
-Slide08Atuacao.steps = 1;
+Slide08Atuacao.steps = 2;
 
 export default Slide08Atuacao;
