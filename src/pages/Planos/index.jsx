@@ -33,21 +33,21 @@ const SLIDES = [
   Slide07Resultados,    // 5  — Alguns dos resultados
   Slide05OQueFazemos,   // 6  — Diferenciais
   Slide06HowItWorks,    // 7  — Como Funciona
-  SlideROICalc,         // 8  — Calculadora ROI
-  SlideWhySection,      // 9  — Processos que vendem
-  Slide15Comparacao,    // 10 — Comparação
-  Slide08Atuacao,       // 11 — Somos seu Parceiro Estratégico
-  Slide09TimeCompleto,  // 12 — Time Completo
-  Slide10Onboarding,    // 13 — Onboarding
-  Slide10bGestao,       // 14 — Gestão
-  Slide11Dashboard,     // 15 — Dashboard
+  SlideWhySection,      // 8  — Processos que vendem
+  Slide15Comparacao,    // 9  — Comparação
+  Slide08Atuacao,       // 10 — Somos seu Parceiro Estratégico
+  Slide09TimeCompleto,  // 11 — Time Completo
+  Slide10Onboarding,    // 12 — Onboarding
+  Slide10bGestao,       // 13 — Gestão
+  Slide11Dashboard,     // 14 — Dashboard
+  SlideROICalc,         // 15 — Calculadora ROI
   Slide12Garantia,      // 16 — Garantia
   Slide13NPS,           // 17 — NPS
   Slide14Planos,        // 18 — Planos
   Slide16Proximos,      // 19 — Próximos Passos
 ];
 const TOTAL = SLIDES.length;
-const LIGHT_SLIDES = new Set([6, 8, 9, 10, 17, 18]); // Diferenciais, ROI, WhySection, Comparação, NPS, Planos
+const LIGHT_SLIDES = new Set([6, 8, 9, 15, 17, 18]); // Diferenciais, WhySection, Comparação, ROI, NPS, Planos
 
 /* ── Tela de Senha ── */
 const AuthScreen = ({ onAuth }) => {

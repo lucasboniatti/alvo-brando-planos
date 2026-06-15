@@ -1,8 +1,8 @@
-import ROICalc from '../../../components/ROICalc';
+import ROICalcProposta from '../../../components/ROICalcProposta';
 
 const SlideROICalc = () => (
   <div className="slide-section-wrap roi-wrap">
-    <ROICalc onCtaClick={() => {}} />
+    <ROICalcProposta />
   </div>
 );
 
