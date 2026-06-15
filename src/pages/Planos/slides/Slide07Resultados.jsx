@@ -33,7 +33,7 @@ const Slide07Resultados = () => (
         investimentos, impulsionar o crescimento, automatizar processos e garantir mais
         previsibilidade nas vendas.
       </p>
-      <div className="slide07-logos">
+      <div className="slide07-logos" style={{ marginTop: 48 }}>
         {LOGOS_TOP.map(l => (
           <div key={l.alt} className="slide07-logo-chip">
             <img src={l.src} alt={l.alt} style={{ height: 36, maxWidth: 120, objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: 0.85 }} />

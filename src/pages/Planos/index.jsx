@@ -102,47 +102,47 @@ const SlidePlayer = () => {
 
   const slideSteps = SLIDES[atual].steps ?? 0;
 
-  const ir = useCallback((idx, resetStep = true) => {
+  const ir = useCallback((idx, novoStep = 0) => {
     if (idx < 0 || idx >= TOTAL) return;
     setAnimDir(idx > atual ? 'next' : 'prev');
     setAtual(idx);
-    if (resetStep) setStep(0);
+    setStep(novoStep);
   }, [atual]);
 
-  // Teclado, botões na tela e swipe: avançam/voltam um step; no limite, trocam de slide.
+  // → / Espaço: avança 1 step; se cheio, vai pro próximo slide limpo
   const proximo = useCallback(() => {
     if (step < slideSteps) {
       setStep(s => s + 1);
     } else {
-      ir(atual + 1);
+      ir(atual + 1, 0);
     }
   }, [ir, atual, step, slideSteps]);
 
+  // ← / botão esquerdo: volta 1 step; se limpo, vai pro anterior TODO PREENCHIDO
   const anterior = useCallback(() => {
     if (step > 0) {
       setStep(s => s - 1);
     } else {
-      ir(atual - 1);
+      const prevIdx = atual - 1;
+      if (prevIdx < 0) return;
+      const prevSteps = SLIDES[prevIdx].steps ?? 0;
+      ir(prevIdx, prevSteps);
     }
   }, [ir, atual, step]);
 
-  // ↑ preenche o slide completo, depois avança pro próximo
+  // ↑ preenche o slide completo; se já cheio, avança pro próximo
   const proximoRapido = useCallback(() => {
     if (step < slideSteps) {
       setStep(slideSteps);
     } else {
-      ir(atual + 1);
+      ir(atual + 1, 0);
     }
   }, [ir, atual, step, slideSteps]);
 
-  // ↓ primeira vez limpa tudo, segunda vez volta pro slide anterior
+  // ↓ volta sempre pro slide anterior, chegando limpo (step=0)
   const anteriorRapido = useCallback(() => {
-    if (step > 0) {
-      setStep(0);
-    } else {
-      ir(atual - 1);
-    }
-  }, [ir, atual, step]);
+    ir(atual - 1, 0);
+  }, [ir, atual]);
 
   /* Teclado */
   useEffect(() => {

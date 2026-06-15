@@ -10,8 +10,8 @@ const Slide06Numeros = ({ step = 0 }) => (
     <div className="slide-inner">
       <div className="slide-label">Resultados em números</div>
       <h2 className="slide-h2" style={{ color: '#fff', marginBottom: 48 }}>
-        Nossa trajetória<br />
-        <span className="slide-brand">fala por si</span>
+        Números da Alvo Brando<br />
+        <span className="slide-brand">em cases de sucesso</span>
       </h2>
       <div className="slide06-grid">
         {STATS.map((s, i) => (

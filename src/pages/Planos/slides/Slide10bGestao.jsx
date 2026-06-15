@@ -16,9 +16,9 @@ const ICONS = {
   cpu:   <><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></>,
 };
 
-const IcoSvg = ({ name }) => (
+const IcoSvg = ({ name, filled }) => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
-    stroke="var(--brand-400)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    stroke={filled ? '#fff' : 'var(--brand-400)'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     {ICONS[name]}
   </svg>
 );
@@ -48,13 +48,14 @@ const Slide10bGestao = ({ step = 0 }) => (
             <div key={it.label} className={`slide-step-item${i < step ? ' visible' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
               <div style={{
                 width: 32, height: 32, borderRadius: 10, flexShrink: 0,
-                background: 'rgba(155,50,241,0.12)',
-                border: '1px solid rgba(155,50,241,0.25)',
+                background: i < step ? 'var(--brand-400)' : 'rgba(155,50,241,0.12)',
+                border: `1px solid ${i < step ? 'var(--brand-400)' : 'rgba(155,50,241,0.25)'}`,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
+                transition: 'background 0.35s ease, border-color 0.35s ease',
               }}>
-                <IcoSvg name={it.icon} />
+                <IcoSvg name={it.icon} filled={i < step} />
               </div>
-              <span style={{ fontSize: 14, color: 'rgba(255,255,255,0.8)' }}>{it.label}</span>
+              <span style={{ fontSize: 14, color: i < step ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.8)', transition: 'color 0.35s ease' }}>{it.label}</span>
             </div>
           ))}
         </div>
