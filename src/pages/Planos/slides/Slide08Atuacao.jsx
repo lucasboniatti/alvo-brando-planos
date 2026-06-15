@@ -8,7 +8,7 @@
 
 const W = 440;
 const H = 420;
-const SPLIT = H * 0.48; // linha divisória — 40% ocupa mais espaço visual
+const SPLIT = H * 0.62; // linha divisória — 60% ocupa mais espaço visual
 
 // Largura do triângulo na altura SPLIT
 const wAtSplit = W * (1 - SPLIT / H);
@@ -73,11 +73,11 @@ const Slide08Atuacao = ({ step = 0 }) => {
               fill="url(#grad-top)"
             />
 
-            {/* Texto 60% */}
-            <text x={W/2} y={SPLIT * 0.38} textAnchor="middle"
+            {/* Texto 60% — centralizado no meio vertical da área roxa */}
+            <text x={W/2} y={SPLIT / 2 - 10} textAnchor="middle"
               fontFamily="var(--font-display)" fontSize="38" fontWeight="800"
               fill="#fff" letterSpacing="-1">60%</text>
-            <text x={W/2} y={SPLIT * 0.38 + 26} textAnchor="middle"
+            <text x={W/2} y={SPLIT / 2 + 18} textAnchor="middle"
               fontFamily="var(--font-display)" fontSize="14" fontWeight="600"
               fill="rgba(255,255,255,0.9)">Estratégico</text>
 
@@ -105,7 +105,7 @@ const Slide08Atuacao = ({ step = 0 }) => {
           </svg>
 
           {/* Label lateral 60% */}
-          <div style={{ position: 'absolute', left: -148, top: SPLIT * 0.3, textAlign: 'right', width: 128 }}>
+          <div style={{ position: 'absolute', left: -148, top: SPLIT / 2 - 20, textAlign: 'right', width: 128 }}>
             <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', lineHeight: 1.5 }}>
               Plano que gera<br/>
               <span style={{ color: 'var(--brand-400)', fontWeight: 600 }}>Previsibilidade</span>
