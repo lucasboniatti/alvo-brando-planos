@@ -131,7 +131,7 @@ const ROICalcProposta = () => {
           <div style={S.margemBox}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
               <span style={{ fontSize: 13, fontWeight: 500, color: 'var(--fg-2)' }}>Margem de lucro</span>
-              <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 18, color: 'var(--mint-600)' }}>{margem}%</span>
+              <MargemValor margem={margem} setMargem={setMargem} />
             </div>
             <input
               type="range" min={1} max={100} step={1} value={margem}
@@ -201,6 +201,39 @@ const Slider = ({ label, value, min, max, step, displayValue, prefix, suffix, on
         style={{ width: '100%', accentColor: '#9B32F1' }}
       />
     </div>
+  );
+};
+
+const MargemValor = ({ margem, setMargem }) => {
+  const [editing, setEditing] = useState(false);
+  const [draft, setDraft] = useState('');
+
+  const startEdit = () => { setDraft(margem.toString()); setEditing(true); };
+  const commitEdit = () => {
+    const num = Number(draft.replace(',', '.'));
+    if (!isNaN(num) && num >= 1 && num <= 100) setMargem(Math.round(num));
+    setEditing(false);
+  };
+
+  if (editing) return (
+    <input
+      autoFocus
+      value={draft}
+      onChange={e => setDraft(e.target.value)}
+      onBlur={commitEdit}
+      onKeyDown={e => { if (e.key === 'Enter') commitEdit(); if (e.key === 'Escape') setEditing(false); }}
+      style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 18, color: 'var(--mint-600)', border: 'none', borderBottom: '2px solid var(--mint-500)', background: 'transparent', outline: 'none', width: 70, textAlign: 'right' }}
+    />
+  );
+
+  return (
+    <span
+      onClick={startEdit}
+      title="Clique para digitar"
+      style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 18, color: 'var(--mint-600)', cursor: 'text', borderBottom: '1px dashed var(--mint-300)' }}
+    >
+      {margem}%
+    </span>
   );
 };
 
