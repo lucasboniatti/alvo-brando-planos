@@ -7,46 +7,43 @@ import logoKinsol from '../../../assets/logo-kinsol.png';
 import logoDeyson from '../../../assets/logo-deysonpontes.png';
 import logoConstrutec from '../../../assets/logo-construtec.png';
 
-const LOGOS_TOP = [
-  { src: logoSolarprime, alt: 'SolarPrime' },
-  { src: logoOrtodoctor, alt: 'Ortodoctor' },
-  { src: logoSolaria,    alt: 'Solar.ia'   },
-  { src: logoKinsol,     alt: 'Kinsol WEG' },
-];
-
-const LOGOS_BOTTOM = [
-  { src: logoSegenergy,  alt: 'SegEnergy',    h: 36, filter: true  },
-  { src: logoDeyson,     alt: 'Deyson Pontes', h: 48, filter: true  },
-  { src: logoGetpower,   alt: 'GetPower',     h: 36, filter: true  },
-  { src: logoConstrutec, alt: 'Construtec',   h: 44, filter: false },
+const LOGOS = [
+  { src: logoKinsol,     alt: 'Kinsol WEG',   h: 32 },
+  { src: logoOrtodoctor, alt: 'Ortodoctor',    h: 32 },
+  { src: logoGetpower,   alt: 'GetPower',      h: 28 },
+  { src: logoSolarprime, alt: 'SolarPrime',    h: 32 },
+  { src: logoSegenergy,  alt: 'SegEnergy',     h: 28 },
+  { src: logoDeyson,     alt: 'Deyson Pontes', h: 36 },
+  { src: logoSolaria,    alt: 'Solar.ia',      h: 32 },
+  { src: logoConstrutec, alt: 'Construtec',    h: 34 },
 ];
 
 const Slide07Resultados = () => (
-  <div className="slide-base dark" style={{ textAlign: 'center' }}>
-    <div className="slide-inner">
-      <div className="slide-label">Cases de sucesso</div>
-      <h2 className="slide-h2" style={{ color: '#fff', marginBottom: 24 }}>
-        Alguns dos resultados<br />que já entregamos
-      </h2>
-      <p className="slide07-intro">
-        O que essas empresas têm em comum? Usando a nossa solução, conseguiram otimizar
-        investimentos, impulsionar o crescimento, automatizar processos e garantir mais
-        previsibilidade nas vendas.
-      </p>
-      <div className="slide07-logos" style={{ marginTop: 48 }}>
-        {LOGOS_TOP.map(l => (
-          <div key={l.alt} className="slide07-logo-chip">
-            <img src={l.src} alt={l.alt} style={{ height: 36, maxWidth: 120, objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: 0.85 }} />
-          </div>
-        ))}
+  <div className="slide-base dark" style={{ alignItems: 'stretch', padding: '52px 0 44px' }}>
+    <div style={{ display: 'flex', width: '100%', maxWidth: 1000, margin: '0 auto', gap: 0, alignItems: 'center', padding: '0 48px' }}>
+
+      {/* Lado esquerdo — texto */}
+      <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingRight: 56 }}>
+        <div className="slide-label" style={{ marginBottom: 6 }}>Cases de sucesso</div>
+        <h2 className="slide-h2" style={{ color: '#fff', marginBottom: 20, textAlign: 'left' }}>
+          Alguns dos resultados<br />que já entregamos
+        </h2>
+        <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.5)', lineHeight: 1.6, textAlign: 'left', margin: 0, maxWidth: 420 }}>
+          O que essas empresas têm em comum? Usando a nossa solução, conseguiram otimizar investimentos, impulsionar o crescimento e garantir mais previsibilidade nas vendas.
+        </p>
       </div>
-      <div className="slide07-logos slide07-logos-bottom">
-        {LOGOS_BOTTOM.map(l => (
-          <div key={l.alt} className="slide07-logo-chip">
-            <img src={l.src} alt={l.alt} style={{ height: l.h, maxWidth: 130, objectFit: 'contain', filter: l.filter ? 'brightness(0) invert(1)' : 'none', opacity: 0.9 }} />
-          </div>
-        ))}
+
+      {/* Lado direito — grid 2×4 de logos */}
+      <div style={{ flexShrink: 0, width: 380 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '28px 56px' }}>
+          {LOGOS.map(l => (
+            <div key={l.alt} style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', minHeight: 56 }}>
+              <img src={l.src} alt={l.alt} style={{ height: l.h + 46, maxWidth: 160, objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: 0.75 }} />
+            </div>
+          ))}
+        </div>
       </div>
+
     </div>
   </div>
 );

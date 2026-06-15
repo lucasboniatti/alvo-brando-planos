@@ -1,0 +1,17 @@
+{
+  "nome": "alvo-brando-planos",
+  "slug": "alvo-brando-planos",
+  "source_kind": "package",
+  "source_root": ".",
+  "design_system_root": "",
+  "local_url": "http://localhost:5173",
+  "live_url": "https://planos.alvobrando.com",
+  "vercel_scope": "lucas-boniatti",
+  "build_command": "npm run build",
+  "notes": [
+    "auto-criado por scripts/publicar-vercel.sh",
+    "site independente em subdomínio próprio: planos.alvobrando.com — NÃO é /planos dentro do site principal"
+  ],
+  "last_local_validation": null,
+  "last_live_validation": null
+}
