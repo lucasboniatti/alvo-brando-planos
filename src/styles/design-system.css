@@ -1,0 +1,378 @@
+/* Alvo Brando Design System Foundations */
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --brand-50:  #F5EBFE;
+  --brand-100: #E8D2FD;
+  --brand-200: #D5B3FB;
+  --brand-300: #BD8AF7;
+  --brand-400: #9B32F1;
+  --brand-500: #8C1EDB;
+  --brand-600: #7517B5;
+  --brand-700: #5F148F;
+  --brand-800: #3F0A60;
+  --brand-900: #260646;
+
+  --coral-50:  #F5EBFE;
+  --coral-100: #E8D2FD;
+  --coral-300: #BD8AF7;
+  --coral-500: #A95BF4;
+  --coral-600: #8C1EDB;
+  --coral-700: #7517B5;
+
+  --night-50:  #F8F4FB;
+  --night-100: #E8E1EE;
+  --night-300: #B3A6BF;
+  --night-500: #6E5F7E;
+  --night-700: #2E1F3E;
+  --night-800: #1A0A2A;
+  --night-900: #0D0218;
+  --night-950: #080010;
+
+  --mint-50:  #E4F9EF;
+  --mint-100: #C2F0D9;
+  --mint-300: #6EDBA5;
+  --mint-500: #1FCE7C;
+  --mint-600: #128A52;
+  --mint-700: #0A5C36;
+
+  --sand-50:  #F8F4FB;
+  --sand-100: #F0E9F8;
+  --sand-150: #E8D2FD;
+  --sand-200: #D5B3FB;
+  --sand-300: #BD8AF7;
+  --sand-400: #A95BF4;
+  --sand-500: #8C1EDB;
+  --sand-600: #7517B5;
+  --sand-700: #5F148F;
+  --sand-800: #3F0A60;
+  --sand-900: #260646;
+  --sand-950: #0D0218;
+
+  --bg-canvas:        var(--sand-50);
+  --bg-surface:       #FFFFFF;
+  --bg-surface-2:     var(--sand-100);
+  --bg-dark:          var(--night-900);
+  --bg-dark-2:        var(--night-800);
+
+  --fg-1:             var(--night-900);
+  --fg-2:             var(--night-500);
+  --fg-3:             var(--sand-500);
+  --fg-on-dark-1:     #F7F2E5;
+  --fg-on-dark-2:     #B5BCCE;
+  --fg-on-brand:      #FFFFFF;
+
+  --border-1:         var(--sand-200);
+  --border-2:         var(--sand-150);
+  --border-dark:      rgba(255, 247, 230, 0.08);
+  --border-focus:     var(--brand-400);
+
+  --brand:            var(--brand-400);
+  --brand-hover:      var(--brand-500);
+  --brand-press:      var(--brand-600);
+  --brand-soft:       var(--brand-50);
+
+  --grad-brand:        linear-gradient(180deg, #BD8AF7 0%, #9B32F1 55%, #8C1EDB 100%);
+  --grad-brand-hover:  linear-gradient(180deg, #A95BF4 0%, #8C1EDB 60%, #7517B5 100%);
+  --grad-night:        linear-gradient(180deg, #2E1F3E 0%, #1A0A2A 55%, #0D0218 100%);
+  --grad-night-hover:  linear-gradient(180deg, #3D2A52 0%, #260646 55%, #1A0A2A 100%);
+  --grad-night-bg:     linear-gradient(180deg, #1A0A2A 0%, #0D0218 60%, #080010 100%);
+
+  --accent:           var(--coral-500);
+  --signal:           var(--mint-500);
+
+  --status-success:   var(--mint-600);
+  --status-success-bg:var(--mint-50);
+  --status-warning:   var(--brand-500);
+  --status-warning-bg:var(--brand-50);
+  --status-error:     var(--coral-700);
+  --status-error-bg:  var(--coral-50);
+  --status-info:      #2E7AE5;
+  --status-info-bg:   #E6F0FB;
+
+  --wa-green: #25D366;
+  --wa-teal:  #128C7E;
+  --wa-bg:    #E5DDD5;
+  --wa-bubble-out: #DCF8C6;
+
+  --font-display: 'Sora', 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-body:    'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  --fs-12: 0.75rem;
+  --fs-14: 0.875rem;
+  --fs-16: 1rem;
+  --fs-18: 1.125rem;
+  --fs-20: 1.25rem;
+  --fs-24: 1.5rem;
+  --fs-30: 1.875rem;
+  --fs-36: 2.25rem;
+  --fs-48: 3rem;
+  --fs-60: 3.75rem;
+  --fs-72: 4.5rem;
+
+  --lh-tight:   1.05;
+  --lh-snug:    1.2;
+  --lh-normal:  1.45;
+  --lh-relaxed: 1.6;
+
+  --tracking-tight:  -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  --r-sm:   6px;
+  --r-md:   10px;
+  --r-lg:   16px;
+  --r-xl:   24px;
+  --r-2xl:  32px;
+  --r-pill: 999px;
+
+  --shadow-sm:   0 1px 2px rgba(38, 6, 70, 0.08);
+  --shadow-md:   0 4px 12px rgba(38, 6, 70, 0.10), 0 1px 3px rgba(38, 6, 70, 0.06);
+  --shadow-lg:   0 16px 48px rgba(13, 2, 24, 0.16), 0 4px 12px rgba(38, 6, 70, 0.08);
+  --shadow-glow: 0 0 0 4px rgba(155, 50, 241, 0.18), 0 8px 32px rgba(155, 50, 241, 0.32);
+  --shadow-inset-dark: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+  --ease:           cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out:       cubic-bezier(0.0, 0.0, 0.2, 1);
+  --ease-in-out:    cubic-bezier(0.4, 0, 0.2, 1);
+  --dur-micro:      120ms;
+  --dur-ui:         220ms;
+  --dur-enter:      700ms;
+  --dur-section:    800ms;
+
+  --container-marketing: 1200px;
+  --container-app:       1440px;
+}
+
+html { font-family: var(--font-body); color: var(--fg-1); background: var(--bg-canvas); -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font-body); font-size: var(--fs-16); line-height: var(--lh-normal); color: var(--fg-1); margin: 0; }
+
+h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); color: var(--fg-1); margin: 0; line-height: var(--lh-tight); letter-spacing: var(--tracking-tight); font-weight: 600; }
+h1 { font-size: var(--fs-60); font-weight: 600; }
+h2 { font-size: var(--fs-48); }
+h3 { font-size: var(--fs-30); }
+h4 { font-size: var(--fs-24); }
+h5 { font-size: var(--fs-20); font-weight: 600; }
+h6 { font-size: var(--fs-16); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--fg-2); }
+
+p { margin: 0 0 var(--space-4); color: var(--fg-1); line-height: var(--lh-relaxed); }
+small, .small { font-size: var(--fs-14); color: var(--fg-2); }
+.meta { font-size: var(--fs-12); color: var(--fg-3); letter-spacing: var(--tracking-wide); text-transform: uppercase; }
+.eyebrow { font-family: var(--font-display); font-size: var(--fs-12); font-weight: 600; letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--brand-600); }
+
+a { color: var(--brand-600); text-decoration: none; border-bottom: 1px solid currentColor; transition: color var(--dur-micro) var(--ease); }
+a:hover { color: var(--brand-700); }
+
+code, kbd, pre, .mono { font-family: var(--font-mono); font-size: 0.92em; }
+code { background: var(--sand-100); padding: 2px 6px; border-radius: var(--r-sm); }
+
+.brand-mark { font-family: var(--font-display); font-weight: 600; letter-spacing: -0.02em; }
+.brand-mark .dot { color: var(--brand-400); }
+.brand-mark .ia { font-weight: 500; }
+
+.eyebrow-mint { color: var(--mint-600); }
+.muted { color: var(--fg-2); }
+
+/* Hero typing dots animation */
+[data-typing] span { width: 6px; height: 6px; border-radius: 50%; background: #34E5A1; display:inline-block; animation: heroBounce 1.4s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+[data-typing] span:nth-child(2){animation-delay:0.18s}
+[data-typing] span:nth-child(3){animation-delay:0.36s}
+@keyframes heroBounce { 0%,70%,100% { opacity: 0.25; transform: translateY(0) scale(0.85); } 35% { opacity: 1; transform: translateY(-4px) scale(1); } }
+
+/* ── Sistema de Animações Premium ─────────────────────────────────────── */
+
+/* Hover nos cards — fundo claro */
+.card-hover,
+.hover-card {
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+}
+.card-hover:hover,
+.hover-card:hover {
+  will-change: transform;
+  transform: translateY(-5px) scale(1.005);
+  box-shadow: 0 24px 56px rgba(14,23,48,0.12), 0 8px 20px rgba(14,23,48,0.06);
+}
+
+/* Hover nos cards — fundo escuro (night-900) */
+.hover-card-dark {
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    background 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: default;
+}
+.hover-card-dark:hover {
+  will-change: transform;
+  transform: translateY(-5px) scale(1.005);
+  background: rgba(255,255,255,0.07) !important;
+  border-color: rgba(255,255,255,0.14) !important;
+  box-shadow: 0 24px 56px rgba(0,0,0,0.28), 0 8px 20px rgba(0,0,0,0.16);
+}
+
+/* Botões secundários (não-CTA) */
+.btn-secondary {
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s cubic-bezier(0.16,1,0.3,1);
+}
+.btn-secondary:hover {
+  background: var(--sand-100) !important;
+  border-color: var(--sand-400) !important;
+}
+.btn-secondary:active {
+  transform: scale(0.97);
+  transition-duration: 0.08s;
+}
+
+/* Cards de notificação do feed */
+.notif-card {
+  transition: transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s cubic-bezier(0.16,1,0.3,1);
+}
+.notif-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(14,23,48,0.10), 0 3px 8px rgba(14,23,48,0.06) !important;
+}
+
+/* Dots do carrossel */
+.carousel-dot {
+  transition: background 0.2s ease, transform 0.15s cubic-bezier(0.16,1,0.3,1);
+  cursor: pointer;
+}
+.carousel-dot:active {
+  transform: scale(1.4);
+}
+
+/* Card destaque do pricing */
+.pricing-highlight-card {
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.pricing-highlight-card:hover {
+  transform: translateY(-5px) scale(1.005);
+  box-shadow: 0 32px 72px rgba(14,23,48,0.32), 0 8px 24px rgba(14,23,48,0.16) !important;
+}
+
+/* Links do menu mobile — feedback no toque */
+.nav-mobile-link-tap {
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+.nav-mobile-link-tap:active {
+  transform: scale(0.97);
+  background: rgba(155,50,241,0.07) !important;
+}
+
+/* Shimmer no botão CTA — elegante, não agressivo */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+}
+.btn-shimmer:hover {
+  transform: translateY(-1px) scale(1.01);
+}
+.btn-shimmer:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+  transition-duration: 0.1s;
+}
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -120%;
+  width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+  animation: shimmer 3.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  pointer-events: none;
+}
+@keyframes shimmer {
+  0%   { left: -120%; }
+  45%, 100% { left: 170%; }
+}
+
+/* ── Respeito a preferência de movimento reduzido ─────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .marquee-track { animation: none !important; }
+}
+
+/* ── Tipografia mobile ────────────────────────────────────── */
+@media (max-width: 768px) {
+  h1 { font-size: var(--fs-36); }
+  h2 { font-size: var(--fs-30); }
+  h3 { font-size: var(--fs-24); }
+}
+
+/* Fade transição de conteúdo */
+.fade-in {
+  animation: fadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Entrada do Hero — stagger orquestrado ─── */
+.hero-enter {
+  opacity: 0;
+  transform: translateY(22px);
+  animation: heroEnter 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-enter-1 { animation-delay: 0.05s; }
+.hero-enter-2 { animation-delay: 0.18s; }
+.hero-enter-3 { animation-delay: 0.30s; }
+.hero-enter-4 { animation-delay: 0.42s; }
+.hero-enter-5 { animation-delay: 0.54s; }
+
+@keyframes heroEnter {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Entrada lateral — para elementos que vêm da esquerda ou direita */
+.slide-from-left {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: slideFromLeft 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.slide-from-right {
+  opacity: 0;
+  transform: translateX(20px);
+  animation: slideFromRight 0.85s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes slideFromLeft {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideFromRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Scale-in para badges e elementos de destaque */
+.scale-in {
+  animation: scaleIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.88); }
+  to   { opacity: 1; transform: scale(1); }
+}
