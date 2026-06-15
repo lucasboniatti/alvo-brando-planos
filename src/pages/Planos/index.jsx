@@ -109,16 +109,7 @@ const SlidePlayer = () => {
     if (resetStep) setStep(0);
   }, [atual]);
 
-  // → seta direita: preenche tudo de uma vez se incompleto, senão avança slide
-  const proximoRapido = useCallback(() => {
-    if (step < slideSteps) {
-      setStep(slideSteps);
-    } else {
-      ir(atual + 1);
-    }
-  }, [ir, atual, step, slideSteps]);
-
-  // ↓ espaço / botão / swipe: avança um step por vez
+  // Swipe: avança ou volta um step por vez; quando acaba, troca de slide.
   const proximo = useCallback(() => {
     if (step < slideSteps) {
       setStep(s => s + 1);
@@ -127,16 +118,6 @@ const SlidePlayer = () => {
     }
   }, [ir, atual, step, slideSteps]);
 
-  // ← seta esquerda: limpa tudo de uma vez se tem algo visível, senão volta slide
-  const anteriorRapido = useCallback(() => {
-    if (step > 0) {
-      setStep(0);
-    } else {
-      ir(atual - 1);
-    }
-  }, [ir, atual, step]);
-
-  // ↑ botão na tela: recolhe um step por vez
   const anterior = useCallback(() => {
     if (step > 0) {
       setStep(s => s - 1);
@@ -145,17 +126,43 @@ const SlidePlayer = () => {
     }
   }, [ir, atual, step]);
 
+  const proximoStep = useCallback(() => {
+    if (step < slideSteps) setStep(s => s + 1);
+  }, [step, slideSteps]);
+
+  const anteriorStep = useCallback(() => {
+    if (step > 0) setStep(s => s - 1);
+  }, [step]);
+
+  // ↑ preenche o slide completo, depois avança pro próximo
+  const proximoRapido = useCallback(() => {
+    if (step < slideSteps) {
+      setStep(slideSteps);
+    } else {
+      ir(atual + 1);
+    }
+  }, [ir, atual, step, slideSteps]);
+
+  // ↓ primeira vez limpa tudo, segunda vez volta pro slide anterior
+  const anteriorRapido = useCallback(() => {
+    if (step > 0) {
+      setStep(0);
+    } else {
+      ir(atual - 1);
+    }
+  }, [ir, atual, step]);
+
   /* Teclado */
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === 'ArrowRight') { e.preventDefault(); proximoRapido(); }
-      if (e.key === ' ' || e.key === 'ArrowDown') { e.preventDefault(); proximo(); }
-      if (e.key === 'ArrowLeft') { e.preventDefault(); ir(atual - 1); }
-      if (e.key === 'ArrowUp') { e.preventDefault(); anterior(); }
+      if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); proximoStep(); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); anteriorStep(); }
+      if (e.key === 'ArrowUp') { e.preventDefault(); proximoRapido(); }
+      if (e.key === 'ArrowDown') { e.preventDefault(); anteriorRapido(); }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [proximoRapido, proximo, anteriorRapido, anterior]);
+  }, [proximoStep, anteriorStep, proximoRapido, anteriorRapido]);
 
   /* Swipe touch */
   const onTouchStart = (e) => { touchStart.current = e.touches[0].clientX; };
@@ -200,8 +207,8 @@ const SlidePlayer = () => {
       {/* Seta anterior */}
       <button
         className={`planos-arrow planos-arrow-prev${LIGHT_SLIDES.has(atual) ? ' light' : ''}`}
-        onClick={anterior}
-        disabled={atual === 0}
+        onClick={anteriorStep}
+        disabled={step === 0}
         aria-label="Slide anterior"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -213,8 +220,8 @@ const SlidePlayer = () => {
       {/* Seta próxima */}
       <button
         className={`planos-arrow planos-arrow-next${LIGHT_SLIDES.has(atual) ? ' light' : ''}`}
-        onClick={proximo}
-        disabled={atual === TOTAL - 1}
+        onClick={proximoStep}
+        disabled={step >= slideSteps}
         aria-label="Próximo slide"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
