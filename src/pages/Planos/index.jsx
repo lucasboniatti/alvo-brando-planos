@@ -109,7 +109,7 @@ const SlidePlayer = () => {
     if (resetStep) setStep(0);
   }, [atual]);
 
-  // Swipe: avança ou volta um step por vez; quando acaba, troca de slide.
+  // Teclado, botões na tela e swipe: avançam/voltam um step; no limite, trocam de slide.
   const proximo = useCallback(() => {
     if (step < slideSteps) {
       setStep(s => s + 1);
@@ -125,14 +125,6 @@ const SlidePlayer = () => {
       ir(atual - 1);
     }
   }, [ir, atual, step]);
-
-  const proximoStep = useCallback(() => {
-    if (step < slideSteps) setStep(s => s + 1);
-  }, [step, slideSteps]);
-
-  const anteriorStep = useCallback(() => {
-    if (step > 0) setStep(s => s - 1);
-  }, [step]);
 
   // ↑ preenche o slide completo, depois avança pro próximo
   const proximoRapido = useCallback(() => {
@@ -155,14 +147,14 @@ const SlidePlayer = () => {
   /* Teclado */
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); proximoStep(); }
-      if (e.key === 'ArrowLeft') { e.preventDefault(); anteriorStep(); }
+      if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); proximo(); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); anterior(); }
       if (e.key === 'ArrowUp') { e.preventDefault(); proximoRapido(); }
       if (e.key === 'ArrowDown') { e.preventDefault(); anteriorRapido(); }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [proximoStep, anteriorStep, proximoRapido, anteriorRapido]);
+  }, [proximo, anterior, proximoRapido, anteriorRapido]);
 
   /* Swipe touch */
   const onTouchStart = (e) => { touchStart.current = e.touches[0].clientX; };
@@ -207,8 +199,8 @@ const SlidePlayer = () => {
       {/* Seta anterior */}
       <button
         className={`planos-arrow planos-arrow-prev${LIGHT_SLIDES.has(atual) ? ' light' : ''}`}
-        onClick={anteriorStep}
-        disabled={step === 0}
+        onClick={anterior}
+        disabled={atual === 0 && step === 0}
         aria-label="Slide anterior"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
@@ -220,8 +212,8 @@ const SlidePlayer = () => {
       {/* Seta próxima */}
       <button
         className={`planos-arrow planos-arrow-next${LIGHT_SLIDES.has(atual) ? ' light' : ''}`}
-        onClick={proximoStep}
-        disabled={step >= slideSteps}
+        onClick={proximo}
+        disabled={atual === TOTAL - 1 && step >= slideSteps}
         aria-label="Próximo slide"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
