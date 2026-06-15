@@ -21,7 +21,7 @@ const Slide01Logo = () => (
       }}
     />
     {/* Conteúdo por cima */}
-    <div className="slide01-logo-wrap" style={{ position: 'relative', zIndex: 1 }}>
+    <div className="slide01-logo-wrap">
       <img src={logoSvg} alt="Alvo Brando" className="slide01-logo-img" />
       <div className="slide01-divider" />
       <p className="slide01-tagline">Assessoria Completa em Marketing &amp; Vendas<br />com Inteligência Artificial</p>
