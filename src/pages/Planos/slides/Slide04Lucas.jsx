@@ -7,7 +7,7 @@ const Slide04Lucas = () => (
       gap: 56, maxWidth: 860, width: '100%', margin: '0 auto',
     }}>
       {/* Foto grande */}
-      <div style={{ flexShrink: 0, width: 300, height: 380, borderRadius: 24, overflow: 'hidden', border: '2.5px solid var(--brand-400)', boxShadow: '0 24px 60px rgba(0,0,0,0.4), 0 0 0 6px rgba(155,50,241,0.18), 0 0 32px rgba(155,50,241,0.35)' }}>
+      <div style={{ flexShrink: 0, width: 300, height: 380, borderRadius: 24, overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 24px 60px rgba(0,0,0,0.4)' }}>
         <img src={lucasImg} alt="Lucas Boniatti" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
       </div>
 

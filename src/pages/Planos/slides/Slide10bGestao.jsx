@@ -44,20 +44,23 @@ const Slide10bGestao = ({ step = 0 }) => (
         </p>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-          {ITEMS.map((it, i) => (
-            <div key={it.label} className={`slide-step-item${i < step ? ' visible' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-              <div style={{
-                width: 32, height: 32, borderRadius: 10, flexShrink: 0,
-                background: i < step ? 'var(--brand-400)' : 'rgba(155,50,241,0.12)',
-                border: `1px solid ${i < step ? 'var(--brand-400)' : 'rgba(155,50,241,0.25)'}`,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                transition: 'background 0.35s ease, border-color 0.35s ease',
-              }}>
-                <IcoSvg name={it.icon} filled={i < step} />
+          {ITEMS.map((it, i) => {
+            const isAtual = i === step - 1;
+            return (
+              <div key={it.label} className={`slide-step-item${i < step ? ' visible' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+                <div style={{
+                  width: 32, height: 32, borderRadius: 10, flexShrink: 0,
+                  background: isAtual ? 'var(--brand-400)' : 'rgba(155,50,241,0.12)',
+                  border: `1px solid ${isAtual ? 'var(--brand-400)' : 'rgba(155,50,241,0.25)'}`,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  transition: 'background 0.35s ease, border-color 0.35s ease',
+                }}>
+                  <IcoSvg name={it.icon} filled={isAtual} />
+                </div>
+                <span style={{ fontSize: 14, color: isAtual ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.8)', transition: 'color 0.35s ease' }}>{it.label}</span>
               </div>
-              <span style={{ fontSize: 14, color: i < step ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.8)', transition: 'color 0.35s ease' }}>{it.label}</span>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 

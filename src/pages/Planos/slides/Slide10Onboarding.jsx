@@ -25,20 +25,23 @@ const Slide10Onboarding = ({ step = 0 }) => (
         <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: 0 }}>
           {/* Linha vertical */}
           <div style={{ position: 'absolute', left: 15, top: 12, bottom: 12, width: 1, background: 'rgba(155,50,241,0.2)' }} />
-          {STEPS.map((s, i) => (
-            <div key={s.n} className={`slide-step-item${i < step ? ' visible' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '7px 0', position: 'relative' }}>
-              <div style={{
-                width: 30, height: 30, borderRadius: '50%', flexShrink: 0,
-                background: i < step ? 'var(--brand-400)' : 'rgba(155,50,241,0.12)',
-                border: `1.5px solid ${i < step ? 'var(--brand-400)' : 'rgba(155,50,241,0.3)'}`,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontFamily: 'var(--font-mono)', fontSize: 9, fontWeight: 700,
-                color: i < step ? '#fff' : 'var(--brand-400)', zIndex: 1,
-                transition: 'background 0.35s ease, border-color 0.35s ease, color 0.35s ease',
-              }}>{s.n}</div>
-              <span style={{ fontSize: 14, color: i < step ? 'rgba(255,255,255,0.9)' : 'rgba(255,255,255,0.6)', fontWeight: 400, transition: 'color 0.35s ease' }}>{s.label}</span>
-            </div>
-          ))}
+          {STEPS.map((s, i) => {
+            const isAtual = i === step - 1;
+            return (
+              <div key={s.n} className={`slide-step-item${i < step ? ' visible' : ''}`} style={{ display: 'flex', alignItems: 'center', gap: 16, padding: '7px 0', position: 'relative' }}>
+                <div style={{
+                  width: 30, height: 30, borderRadius: '50%', flexShrink: 0,
+                  background: isAtual ? 'var(--brand-400)' : 'rgba(155,50,241,0.12)',
+                  border: `1.5px solid ${isAtual ? 'var(--brand-400)' : 'rgba(155,50,241,0.3)'}`,
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  fontFamily: 'var(--font-mono)', fontSize: 9, fontWeight: 700,
+                  color: isAtual ? '#fff' : 'var(--brand-400)', zIndex: 1,
+                  transition: 'background 0.35s ease, border-color 0.35s ease, color 0.35s ease',
+                }}>{s.n}</div>
+                <span style={{ fontSize: 14, color: isAtual ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.6)', fontWeight: 400, transition: 'color 0.35s ease' }}>{s.label}</span>
+              </div>
+            );
+          })}
         </div>
       </div>
 

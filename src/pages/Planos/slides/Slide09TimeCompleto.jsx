@@ -47,17 +47,20 @@ const Slide09TimeCompleto = ({ step = 0 }) => (
         Pelo preço de <span style={{ color: '#fff', fontWeight: 600 }}>1 funcionário CLT</span>
       </p>
       <div className="slide09-grid">
-        {ROLES.map((r, i) => (
-          <div key={r.n} className={`slide09-role slide-step-item${i < step ? ' visible' : ''}`}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginBottom: 6 }}>
-              <span style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.05em' }}>
-                {String(r.n).padStart(2, '0')}
-              </span>
-              <Icon name={r.icon} />
+        {ROLES.map((r, i) => {
+          const isAtual = i === step - 1;
+          return (
+            <div key={r.n} className={`slide09-role slide-step-item${i < step ? ' visible' : ''}`} style={isAtual ? { border: '1.5px solid var(--brand-400)', boxShadow: '0 0 0 3px rgba(155,50,241,0.18)' } : {}}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6, marginBottom: 6 }}>
+                <span style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.05em' }}>
+                  {String(r.n).padStart(2, '0')}
+                </span>
+                <Icon name={r.icon} />
+              </div>
+              <div>{r.label}</div>
             </div>
-            <div>{r.label}</div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </div>
   </div>
