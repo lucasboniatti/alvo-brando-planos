@@ -864,8 +864,8 @@ function RankingsSection() {
 // ─── Root ──────────────────────────────────────────────────────────────────────
 export default function EmbeddedDashboard() {
   const [channel, setChannel] = useState('all')
-  const [dateFrom, setDateFrom] = useState(() => getDateRange('30d').from)
-  const [dateTo,   setDateTo]   = useState(() => getDateRange('30d').to)
+  const [dateFrom, setDateFrom] = useState(() => localISO(addDays(new Date(), -29)))
+  const [dateTo,   setDateTo]   = useState(() => localISO(new Date()))
   const [atBottom, setAtBottom] = useState(false)
   const scrollRef = useRef(null)
 
