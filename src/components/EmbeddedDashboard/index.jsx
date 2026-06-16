@@ -76,7 +76,7 @@ function Card({ children, style, accent }) {
       background: T.surface,
       border: `1px solid ${accent ? T.accent : T.border}`,
       borderRadius: 12,
-      padding: 20,
+      padding: 14,
       ...style,
     }}>
       {children}
@@ -135,14 +135,10 @@ function PillGroup({ items, value, onChange }) {
 function FilterBar({ preset, setPreset, channel, setChannel }) {
   return (
     <div style={{
-      display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-      padding: '12px 24px', borderBottom: `1px solid ${T.border}`,
+      display: 'flex', alignItems: 'center', justifyContent: 'flex-end',
+      padding: '10px 16px', borderBottom: `1px solid ${T.border}`,
       background: T.surface, flexWrap: 'wrap', gap: 10,
     }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <span style={{ fontSize: 16, fontWeight: 600, color: T.primary, letterSpacing: '-0.01em' }}>Dashboard</span>
-        <span style={{ fontSize: 12, color: T.muted }}>Marketing & Vendas</span>
-      </div>
       <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
         <PillGroup items={PRESETS}  value={preset}  onChange={setPreset}  />
         <div style={{ width: 1, height: 20, background: T.border }} />
@@ -158,7 +154,7 @@ function KPICard({ metric }) {
   return (
     <Card>
       <p style={{ fontSize: 11, color: T.secondary, marginBottom: 10, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{metric.label}</p>
-      <p style={{ fontSize: 24, fontWeight: 700, color: T.primary, fontVariantNumeric: 'tabular-nums', marginBottom: 8, lineHeight: 1.15, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+      <p style={{ fontSize: 20, fontWeight: 700, color: T.primary, fontVariantNumeric: 'tabular-nums', marginBottom: 6, lineHeight: 1.15, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
         {fmtKPIValue(metric.value, metric.format)}
       </p>
       <div style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 12 }}>
@@ -174,7 +170,7 @@ function TrendChartInvestLeads({ investment, leads }) {
   const data = investment.map((pt, i) => ({ date: formatDate(pt.date), index: i, Investimento: pt.value, Leads: leads[i]?.value ?? 0 }))
   const step = data.length > 60 ? 14 : data.length > 30 ? 7 : 1
   return (
-    <ResponsiveContainer width="100%" height={180}>
+    <ResponsiveContainer width="100%" height={140}>
       <ComposedChart data={data} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
         <CartesianGrid strokeDasharray="3 3" stroke={T.border} strokeOpacity={0.4} vertical={false} />
         <XAxis xAxisId="bar"  dataKey="date"  tick={{ fill: T.muted, fontSize: 10 }} tickLine={false} axisLine={false} interval={step - 1} />
@@ -193,7 +189,7 @@ function TrendChartInvestLeads({ investment, leads }) {
 function TrendChartRevenue({ revenue }) {
   const data = revenue.map(pt => ({ label: formatDate(pt.date), value: pt.value }))
   return (
-    <ResponsiveContainer width="100%" height={180}>
+    <ResponsiveContainer width="100%" height={140}>
       <AreaChart data={data} margin={{ top: 4, right: 8, left: 0, bottom: 0 }}>
         <defs>
           <linearGradient id="revGrad" x1="0" y1="0" x2="0" y2="1">
@@ -509,7 +505,7 @@ export default function EmbeddedDashboard() {
 
       <FilterBar preset={preset} setPreset={setPreset} channel={channel} setChannel={setChannel} />
 
-      <div style={{ maxHeight: 'calc(100vh - 180px)', overflowY: 'auto', padding: '24px 20px 32px', display: 'flex', flexDirection: 'column', gap: 28, scrollbarWidth: 'thin', scrollbarColor: `${T.border} transparent` }}>
+      <div style={{ maxHeight: 'calc(100vh - 280px)', overflowY: 'auto', padding: '16px 20px 24px', display: 'flex', flexDirection: 'column', gap: 20, scrollbarWidth: 'thin', scrollbarColor: `${T.border} transparent` }}>
         {/* KPIs */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, minmax(0, 1fr))', gap: 10 }}>
           {Object.values(kpis).map(m => <KPICard key={m.label} metric={m} />)}
