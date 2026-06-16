@@ -4,7 +4,7 @@
 .slide06-stat-step,
 .slide-step-item {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(14px);
   transition: none;
   pointer-events: none;
 }
@@ -12,7 +12,7 @@
 .slide-step-item.visible {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  transition: opacity 0.38s cubic-bezier(0.16, 1, 0.3, 1), transform 0.38s cubic-bezier(0.16, 1, 0.3, 1);
   pointer-events: auto;
 }
 
@@ -119,21 +119,21 @@
 }
 
 .planos-slide-wrap.entering {
-  animation: slideEnter 0.32s var(--ease) forwards;
+  animation: slideEnter 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .planos-slide-wrap.entering-back {
-  animation: slideEnterBack 0.32s var(--ease) forwards;
+  animation: slideEnterBack 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 @keyframes slideEnter {
-  from { opacity: 0; transform: translateX(28px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from { opacity: 0; transform: translateX(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
 }
 
 @keyframes slideEnterBack {
-  from { opacity: 0; transform: translateX(-28px); }
-  to   { opacity: 1; transform: translateX(0); }
+  from { opacity: 0; transform: translateX(-24px) scale(0.97); }
+  to   { opacity: 1; transform: translateX(0) scale(1); }
 }
 
 /* ── Barra de Progresso ── */

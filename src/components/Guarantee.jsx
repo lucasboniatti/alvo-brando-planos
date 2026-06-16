@@ -83,10 +83,10 @@ const s = {
     display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20
   },
   cardTitle: {
-    fontFamily: "var(--font-display)", fontSize: 20, fontWeight: 600,
+    fontFamily: "var(--font-display)", fontSize: 17, fontWeight: 600,
     color: "#FBF7EE", marginBottom: 10, letterSpacing: "-0.015em"
   },
-  cardBody: { fontSize: 15, lineHeight: 1.6, color: "#B5BCCE" },
+  cardBody: { fontSize: 12, lineHeight: 1.6, color: "#B5BCCE" },
 };
 
 Guarantee.steps = 2;
