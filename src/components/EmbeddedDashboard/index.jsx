@@ -308,7 +308,7 @@ function DonutChart({ data, colors, centerLabel, fmtVal }) {
     <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
       <div style={{ position: 'relative', width: 100, height: 100, flexShrink: 0 }}>
         <PieChart width={100} height={100}>
-          <Pie data={data} cx={50} cy={50} innerRadius={32} outerRadius={48} paddingAngle={2} dataKey="value"
+          <Pie data={data} cx={50} cy={50} innerRadius={32} outerRadius={48} paddingAngle={2} dataKey="value" stroke="none"
             onMouseEnter={(_, i) => setHovered(i)} onMouseLeave={() => setHovered(null)}>
             {data.map((_, i) => <Cell key={i} fill={colors[i % colors.length]} opacity={hovered === null || hovered === i ? 1 : 0.35} />)}
           </Pie>
@@ -345,7 +345,7 @@ function DistributionSection({ dist }) {
         </Card>
         <Card>
           <CardLabel>Vendas por Fonte</CardLabel>
-          <DonutChart data={dist.bySource.map(d => ({ label: d.source, value: d.sales, percent: d.percent }))} colors={DONUT_COLORS_SOURCE} centerLabel={fmtNumber(dist.bySource.reduce((s,i) => s + i.sales, 0))} />
+          <DonutChart data={dist.bySource.map(d => ({ label: d.source, value: d.sales, percent: d.percent }))} colors={DONUT_COLORS_SOURCE} centerLabel={fmtNumber(dist.bySource.reduce((s,i) => s + i.sales, 0))} fmtVal={fmtNumber} />
         </Card>
         <Card>
           <CardLabel>Receita por Fonte</CardLabel>
@@ -509,7 +509,7 @@ export default function EmbeddedDashboard() {
 
       <FilterBar preset={preset} setPreset={setPreset} channel={channel} setChannel={setChannel} />
 
-      <div style={{ maxHeight: 660, overflowY: 'auto', padding: '24px 20px', display: 'flex', flexDirection: 'column', gap: 28, scrollbarWidth: 'thin', scrollbarColor: `${T.border} transparent` }}>
+      <div style={{ maxHeight: 660, overflowY: 'auto', padding: '24px 20px 32px', display: 'flex', flexDirection: 'column', gap: 28, scrollbarWidth: 'thin', scrollbarColor: `${T.border} transparent` }}>
         {/* KPIs */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, minmax(0, 1fr))', gap: 10 }}>
           {Object.values(kpis).map(m => <KPICard key={m.label} metric={m} />)}
