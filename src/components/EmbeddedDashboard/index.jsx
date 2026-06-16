@@ -509,7 +509,7 @@ export default function EmbeddedDashboard() {
 
       <FilterBar preset={preset} setPreset={setPreset} channel={channel} setChannel={setChannel} />
 
-      <div style={{ maxHeight: 660, overflowY: 'auto', padding: '24px 20px 32px', display: 'flex', flexDirection: 'column', gap: 28, scrollbarWidth: 'thin', scrollbarColor: `${T.border} transparent` }}>
+      <div style={{ maxHeight: 'calc(100vh - 180px)', overflowY: 'auto', padding: '24px 20px 32px', display: 'flex', flexDirection: 'column', gap: 28, scrollbarWidth: 'thin', scrollbarColor: `${T.border} transparent` }}>
         {/* KPIs */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, minmax(0, 1fr))', gap: 10 }}>
           {Object.values(kpis).map(m => <KPICard key={m.label} metric={m} />)}
