@@ -500,12 +500,12 @@ export default function EmbeddedDashboard() {
   const dist   = useMemo(() => computeDistribution(), [])
 
   return (
-    <div className="dash-embed" style={{ background: T.bg, borderRadius: 16, overflow: 'hidden', border: `1px solid ${T.border}`, boxShadow: '0 32px 80px rgba(0,0,0,0.5)', fontFamily: 'Inter, system-ui, sans-serif', color: T.primary, maxHeight: 630 }}>
+    <div className="dash-embed" style={{ background: T.bg, borderRadius: 16, overflow: 'hidden', border: `1px solid ${T.border}`, boxShadow: '0 32px 80px rgba(0,0,0,0.5)', fontFamily: 'Inter, system-ui, sans-serif', color: T.primary, maxHeight: 600 }}>
       <style>{GLOBAL_SVG_FIX}</style>
 
       <FilterBar preset={preset} setPreset={setPreset} channel={channel} setChannel={setChannel} />
 
-      <div style={{ maxHeight: 590, overflowY: 'auto', padding: '16px 20px 24px', display: 'flex', flexDirection: 'column', gap: 20, scrollbarWidth: 'thin', scrollbarColor: `${T.border} transparent` }}>
+      <div style={{ maxHeight: 560, overflowY: 'auto', padding: '16px 20px 24px', display: 'flex', flexDirection: 'column', gap: 20, scrollbarWidth: 'thin', scrollbarColor: `${T.border} transparent` }}>
         {/* KPIs */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(6, minmax(0, 1fr))', gap: 10 }}>
           {Object.values(kpis).map(m => <KPICard key={m.label} metric={m} />)}
