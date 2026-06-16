@@ -706,7 +706,7 @@
 
 /* Pricing */
 .slide-section-wrap.pricing-wrap {
-  align-items: center;
+  align-items: flex-start;
   background: var(--bg-canvas, var(--night-50));
 }
 

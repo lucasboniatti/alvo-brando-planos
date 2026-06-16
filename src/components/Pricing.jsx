@@ -36,7 +36,9 @@ const Pricing = ({ onCtaClick, step }) => {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 20px;
-          align-items: start;
+        }
+        .pricing-tier {
+          align-self: start;
         }
         .pricing-h2 {
           font-family: var(--font-display);
@@ -84,7 +86,7 @@ const Pricing = ({ onCtaClick, step }) => {
         </div>
         <div ref={ref} className="pricing-grid">
           {tiers.map((t, ti) => (
-            <div key={t.name} data-reveal style={{ ...priceStyles.tier, ...(t.highlight ? priceStyles.highlight : {}), ...stepStyle(ti, step), ...(step !== undefined && (ti + 4) >= step ? { paddingBottom: 48 } : { paddingBottom: 32 }) }} className={`pricing-tier ${t.highlight ? 'pricing-highlight-card' : 'hover-card'}`}>
+            <div key={t.name} data-reveal style={{ ...priceStyles.tier, ...(t.highlight ? priceStyles.highlight : {}), ...stepStyle(ti, step) }} className={`pricing-tier ${t.highlight ? 'pricing-highlight-card' : 'hover-card'}`}>
               {t.highlight && <div style={priceStyles.badge}>★ Mais escolhido</div>}
 
               {/* Nome + descrição */}
@@ -104,7 +106,7 @@ const Pricing = ({ onCtaClick, step }) => {
                 ))}
               </ul>
 
-              {/* Separador 2 + preço — aparecem no step 5/6/7 */}
+              {/* Separador 2 + preço — entra sem mover o topo do card */}
               <div style={step !== undefined ? { display: (ti + 4) < step ? 'block' : 'none' } : {}}>
                 <div className={`pricing-divider${t.highlight ? ' dark' : ''}`} />
                 <div className={`pricing-invest-label${t.highlight ? ' dark' : ''}`}>Investimento</div>

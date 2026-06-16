@@ -18,19 +18,12 @@ const LOGOS = [
   { src: logoConstrutec, alt: 'Construtec',    h: 34 },
 ];
 
-const stepStyle = (i, step) => ({
-  opacity: i < step ? 1 : 0,
-  transform: i < step ? 'translateY(0)' : 'translateY(14px)',
-  transition: 'opacity 0.38s cubic-bezier(0.16,1,0.3,1), transform 0.38s cubic-bezier(0.16,1,0.3,1)',
-  pointerEvents: i < step ? 'auto' : 'none',
-});
-
-const Slide07Resultados = ({ step = 0 }) => (
+const Slide07Resultados = () => (
   <div className="slide-base dark" style={{ alignItems: 'stretch', padding: '52px 0 44px' }}>
     <div style={{ display: 'flex', width: '100%', maxWidth: 1000, margin: '0 auto', gap: 0, alignItems: 'center', padding: '0 48px' }}>
 
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', paddingRight: 56 }}>
-        <div style={stepStyle(0, step)}>
+        <div>
           <div className="slide-label" style={{ marginBottom: 6 }}>Cases de sucesso</div>
           <h2 className="slide-h2" style={{ color: '#fff', marginBottom: 20, textAlign: 'left' }}>
             Alguns dos resultados<br />que já entregamos
@@ -43,13 +36,8 @@ const Slide07Resultados = ({ step = 0 }) => (
 
       <div style={{ flexShrink: 0, width: 380 }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '28px 56px' }}>
-          {LOGOS.map((l, i) => (
-            <div key={l.alt} style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'flex-start', minHeight: 56,
-              opacity: (i + 1) < step ? 1 : 0,
-              transform: (i + 1) < step ? 'translateY(0)' : 'translateY(10px)',
-              transition: `opacity 0.38s cubic-bezier(0.16,1,0.3,1) ${i * 40}ms, transform 0.38s cubic-bezier(0.16,1,0.3,1) ${i * 40}ms`,
-            }}>
+          {LOGOS.map((l) => (
+            <div key={l.alt} style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', minHeight: 56 }}>
               <img src={l.src} alt={l.alt} style={{ height: l.h + 46, maxWidth: 160, objectFit: 'contain', filter: 'brightness(0) invert(1)', opacity: 0.75 }} />
             </div>
           ))}
@@ -60,6 +48,6 @@ const Slide07Resultados = ({ step = 0 }) => (
   </div>
 );
 
-Slide07Resultados.steps = 9;
+Slide07Resultados.steps = 0;
 
 export default Slide07Resultados;

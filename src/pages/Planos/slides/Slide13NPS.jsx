@@ -92,17 +92,17 @@ const Slide13NPS = ({ step = 0 }) => (
     </div>
 
     <div className="nps-copy">
-      <div style={{ ...s.label, ...stepStyle(0, step) }}>Excelência reconhecida</div>
-      <div style={stepStyle(1, step)}>
+      <div style={s.label}>Excelência reconhecida</div>
+      <div>
         <Stars />
         <div style={s.nps}>97,2</div>
         <div style={s.title}>Nosso NPS</div>
       </div>
-      <p style={{ ...s.body, ...stepStyle(2, step) }}>
+      <p style={{ ...s.body, ...stepStyle(0, step) }}>
         Esse índice reflete o alto nível de satisfação dos nossos clientes — que além de
         aprovarem nosso trabalho, recomendam para outras empresas.
       </p>
-      <div style={{ display: 'flex', gap: 24, marginTop: 28, ...stepStyle(3, step) }}>
+      <div style={{ display: 'flex', gap: 24, marginTop: 28, ...stepStyle(0, step) }}>
         <div>
           <div style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 700, color: 'var(--brand-500)', letterSpacing: '-0.02em' }}>+180</div>
           <div style={{ fontSize: 12, color: 'var(--fg-3)', marginTop: 2 }}>clientes atendidos</div>
@@ -148,5 +148,7 @@ const s = {
     color: 'var(--fg-2)', maxWidth: 400,
   },
 };
+
+Slide13NPS.steps = 1;
 
 export default Slide13NPS;
