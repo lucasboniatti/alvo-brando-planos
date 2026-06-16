@@ -23,7 +23,14 @@ const Stars = () => (
   </div>
 );
 
-const Slide13NPS = () => (
+const stepStyle = (i, step) => ({
+  opacity: i < step ? 1 : 0,
+  transform: i < step ? 'translateY(0)' : 'translateY(14px)',
+  transition: 'opacity 0.38s cubic-bezier(0.16,1,0.3,1), transform 0.38s cubic-bezier(0.16,1,0.3,1)',
+  pointerEvents: i < step ? 'auto' : 'none',
+});
+
+const Slide13NPS = ({ step = 0 }) => (
   <div style={s.slide}>
     <style>{`
       .nps-photo-col {
@@ -78,24 +85,24 @@ const Slide13NPS = () => (
       }
     `}</style>
 
-    {/* Foto de fundo */}
     <div className="nps-photo-col">
       <img src={heroTeam} alt="Equipe Alvo Brando" draggable={false} />
       <div className="nps-fade-left" />
       <div className="nps-fade-top" />
     </div>
 
-    {/* Conteúdo */}
     <div className="nps-copy">
-      <div style={s.label}>Excelência reconhecida</div>
-      <Stars />
-      <div style={s.nps}>97,2</div>
-      <div style={s.title}>Nosso NPS</div>
-      <p style={s.body}>
+      <div style={{ ...s.label, ...stepStyle(0, step) }}>Excelência reconhecida</div>
+      <div style={stepStyle(1, step)}>
+        <Stars />
+        <div style={s.nps}>97,2</div>
+        <div style={s.title}>Nosso NPS</div>
+      </div>
+      <p style={{ ...s.body, ...stepStyle(2, step) }}>
         Esse índice reflete o alto nível de satisfação dos nossos clientes — que além de
         aprovarem nosso trabalho, recomendam para outras empresas.
       </p>
-      <div style={{ display: 'flex', gap: 24, marginTop: 28 }}>
+      <div style={{ display: 'flex', gap: 24, marginTop: 28, ...stepStyle(3, step) }}>
         <div>
           <div style={{ fontFamily: 'var(--font-display)', fontSize: 28, fontWeight: 700, color: 'var(--brand-500)', letterSpacing: '-0.02em' }}>+180</div>
           <div style={{ fontSize: 12, color: 'var(--fg-3)', marginTop: 2 }}>clientes atendidos</div>
