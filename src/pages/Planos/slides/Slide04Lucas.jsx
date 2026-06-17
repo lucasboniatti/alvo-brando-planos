@@ -1,8 +1,8 @@
 import lucasImg from '../../../assets/lucas.png';
 
 const Slide04Lucas = ({ step = 0 }) => {
-  const showNome     = step >= 1;
-  const showDetalhes = step >= 2;
+  const showNome     = true;
+  const showDetalhes = step >= 1;
 
   return (
     <div className="slide-base dark" style={{ justifyContent: 'center', alignItems: 'center' }}>
@@ -59,6 +59,6 @@ const Slide04Lucas = ({ step = 0 }) => {
   );
 };
 
-Slide04Lucas.steps = 2;
+Slide04Lucas.steps = 1;
 
 export default Slide04Lucas;

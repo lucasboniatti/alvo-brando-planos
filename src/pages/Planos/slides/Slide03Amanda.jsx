@@ -1,8 +1,8 @@
 import amandaImg from '../../../assets/amanda2.webp';
 
 const Slide03Amanda = ({ step = 0 }) => {
-  const showNome    = step >= 1;
-  const showDetalhes = step >= 2;
+  const showNome    = true;
+  const showDetalhes = step >= 1;
 
   return (
     <div className="slide-base dark" style={{ justifyContent: 'center', alignItems: 'center' }}>
@@ -59,6 +59,6 @@ const Slide03Amanda = ({ step = 0 }) => {
   );
 };
 
-Slide03Amanda.steps = 2;
+Slide03Amanda.steps = 1;
 
 export default Slide03Amanda;
