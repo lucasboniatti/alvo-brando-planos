@@ -12,6 +12,7 @@ import SlideWhySection from './slides/SlideWhySection';
 import SlideROICalc from './slides/SlideROICalc';
 import Slide06Numeros from './slides/Slide06Numeros';
 import Slide07Resultados from './slides/Slide07Resultados';
+import Slide07bCriativos from './slides/Slide07bCriativos';
 import Slide08Atuacao from './slides/Slide08Atuacao';
 import Slide09TimeCompleto from './slides/Slide09TimeCompleto';
 import Slide10Onboarding from './slides/Slide10Onboarding';
@@ -31,23 +32,24 @@ const SLIDES = [
   Slide04Lucas,         // 3
   Slide06Numeros,       // 4  — Nossa trajetória fala por si
   Slide07Resultados,    // 5  — Alguns dos resultados
-  Slide05OQueFazemos,   // 6  — Diferenciais
-  Slide06HowItWorks,    // 7  — Como Funciona
-  SlideWhySection,      // 8  — Processos que vendem
-  Slide15Comparacao,    // 9  — Comparação
-  Slide08Atuacao,       // 10 — Somos seu Parceiro Estratégico
-  Slide09TimeCompleto,  // 11 — Time Completo
-  Slide10Onboarding,    // 12 — Onboarding
-  Slide10bGestao,       // 13 — Gestão
-  Slide11Dashboard,     // 14 — Dashboard
-  SlideROICalc,         // 15 — Calculadora ROI
-  Slide12Garantia,      // 16 — Garantia
-  Slide13NPS,           // 17 — NPS
-  Slide14Planos,        // 18 — Planos
-  Slide16Proximos,      // 19 — Próximos Passos
+  Slide07bCriativos,    // 6  — Criativos que converteram
+  Slide05OQueFazemos,   // 7  — Diferenciais
+  Slide06HowItWorks,    // 8  — Como Funciona
+  SlideWhySection,      // 9  — Processos que vendem
+  Slide15Comparacao,    // 10 — Comparação
+  Slide08Atuacao,       // 11 — Somos seu Parceiro Estratégico
+  Slide09TimeCompleto,  // 12 — Time Completo
+  Slide10Onboarding,    // 13 — Onboarding
+  Slide10bGestao,       // 14 — Gestão
+  Slide11Dashboard,     // 15 — Dashboard
+  SlideROICalc,         // 16 — Calculadora ROI
+  Slide12Garantia,      // 17 — Garantia
+  Slide13NPS,           // 18 — NPS
+  Slide14Planos,        // 19 — Planos
+  Slide16Proximos,      // 20 — Próximos Passos
 ];
 const TOTAL = SLIDES.length;
-const LIGHT_SLIDES = new Set([6, 8, 9, 15, 17, 18]); // Diferenciais, WhySection, Comparação, ROI, NPS, Planos
+const LIGHT_SLIDES = new Set([7, 9, 10, 16, 18, 19]); // Diferenciais, WhySection, Comparação, ROI, NPS, Planos
 
 /* ── Tela de Senha ── */
 const AuthScreen = ({ onAuth }) => {
@@ -130,9 +132,11 @@ const SlidePlayer = () => {
     }
   }, [ir, atual, step]);
 
-  // ↑ preenche o slide completo; se já cheio, avança pro próximo
+  // ↑ pula direto pro próximo slide (sem preencher steps intermediários) se o slide tiver skipFastSteps
   const proximoRapido = useCallback(() => {
-    if (step < slideSteps) {
+    if (SLIDES[atual].skipFastSteps) {
+      ir(atual + 1, 0);
+    } else if (step < slideSteps) {
       setStep(slideSteps);
     } else {
       ir(atual + 1, 0);

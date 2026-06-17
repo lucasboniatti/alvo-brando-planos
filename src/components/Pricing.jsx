@@ -125,7 +125,7 @@ const Pricing = ({ onCtaClick, step }) => {
           <div style={{
             textAlign: 'center',
             marginTop: 40,
-            opacity: step === 4 ? 1 : 0,
+            opacity: step >= 4 && step <= 6 ? 1 : 0,
             transition: 'opacity 0.4s ease',
             pointerEvents: 'none',
           }}>
