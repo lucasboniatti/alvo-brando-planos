@@ -80,8 +80,8 @@ const Slide13NPS = ({ step = 0 }) => (
         display: flex;
         flex-direction: column;
         justify-content: center;
-        max-width: 500px;
-        padding: 0 0 0 64px;
+        max-width: 680px;
+        padding: 0 0 0 120px;
       }
     `}</style>
 

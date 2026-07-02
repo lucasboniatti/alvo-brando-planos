@@ -706,13 +706,15 @@
 
 /* Pricing */
 .slide-section-wrap.pricing-wrap {
-  align-items: flex-start;
+  align-items: stretch;
   background: var(--bg-canvas, var(--night-50));
 }
 
 .slide-section-wrap.pricing-wrap > section {
   padding-top: 40px !important;
   padding-bottom: 40px !important;
+  height: 100%;
+  box-sizing: border-box;
 }
 
 /* WhySection */

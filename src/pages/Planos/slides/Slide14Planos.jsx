@@ -6,6 +6,6 @@ const Slide14Planos = ({ step }) => (
   </div>
 );
 
-Slide14Planos.steps = 8;
+Slide14Planos.steps = 7;
 
 export default Slide14Planos;

@@ -106,8 +106,8 @@ const Pricing = ({ onCtaClick, step }) => {
                 ))}
               </ul>
 
-              {/* Separador 2 + preço — entra sem mover o topo do card */}
-              <div style={step !== undefined ? { display: (ti + 4) < step ? 'block' : 'none' } : {}}>
+              {/* Separador 2 + preço — Starter step 5, Growth step 6, Scale step 7 */}
+              <div style={step !== undefined ? { display: step > (ti + 4) ? 'block' : 'none' } : {}}>
                 <div className={`pricing-divider${t.highlight ? ' dark' : ''}`} />
                 <div className={`pricing-invest-label${t.highlight ? ' dark' : ''}`}>Investimento</div>
                 <div style={priceStyles.priceRow}>
@@ -120,12 +120,12 @@ const Pricing = ({ onCtaClick, step }) => {
           ))}
         </div>
 
-        {/* Pergunta intermediária — aparece no step 4, some quando os preços começam */}
+        {/* Pergunta intermediária — aparece no step 3 (todos os cards visíveis, antes dos preços) */}
         {step !== undefined && (
           <div style={{
             textAlign: 'center',
             marginTop: 40,
-            opacity: step >= 4 && step <= 6 ? 1 : 0,
+            opacity: step === 4 ? 1 : 0,
             transition: 'opacity 0.4s ease',
             pointerEvents: 'none',
           }}>
@@ -140,12 +140,12 @@ const Pricing = ({ onCtaClick, step }) => {
 };
 
 const priceStyles = {
-  section: { padding: "80px 24px", background: "var(--bg-canvas)" },
-  inner: { maxWidth: 1200, margin: "0 auto" },
+  section: { padding: "40px 24px", background: "var(--bg-canvas)", minHeight: "100%", display: "flex", flexDirection: "column", justifyContent: "center" },
+  inner: { maxWidth: 1200, margin: "0 auto", width: "100%" },
   label: { display: "inline-block", fontFamily: "var(--font-display)", fontSize: 11, fontWeight: 500, color: "var(--brand-500)", textTransform: "uppercase", letterSpacing: "0.1em", border: "1px solid rgba(155,50,241,0.35)", borderRadius: 999, padding: "5px 14px", marginBottom: 8, background: "transparent" },
   grid: { display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, alignItems: "stretch" },
   tier: { background: "white", border: "1px solid var(--border-1)", borderRadius: 20, paddingTop: 32, paddingLeft: 32, paddingRight: 32, paddingBottom: 32, display: "flex", flexDirection: "column", position: "relative", boxShadow: "var(--shadow-sm)" },
-  highlight: { background: "linear-gradient(180deg, #18213D 0%, #0D0218 60%, #0A1228 100%)", color: "white", border: "none", boxShadow: "0 24px 60px rgba(14,23,48,0.25)" },
+  highlight: { background: "linear-gradient(180deg, #18213D 0%, #0D0218 60%, #0A1228 100%)", color: "white", border: "none", boxShadow: "0 24px 60px rgba(155,50,241,0.10)" },
   badge: { position: "absolute", top: -14, left: 32, background: "var(--brand-400)", color: "#FFFFFF", fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 11, padding: "5px 11px", borderRadius: 999, textTransform: "uppercase", letterSpacing: "0.06em" },
   tierName: { fontFamily: "var(--font-display)", fontSize: 24, fontWeight: 700, letterSpacing: "-0.02em", marginBottom: 8 },
   priceRow: { display: "flex", alignItems: "baseline", gap: 4 },
@@ -157,6 +157,6 @@ const priceStyles = {
   cta: { fontFamily: "var(--font-body)", fontWeight: 600, fontSize: 15, padding: "13px 20px", borderRadius: 12, cursor: "pointer", width: "100%" }
 };
 
-Pricing.steps = 8;
+Pricing.steps = 7;
 
 export default Pricing;
